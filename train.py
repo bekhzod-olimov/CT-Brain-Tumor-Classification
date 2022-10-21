@@ -1,8 +1,35 @@
+# Import libraries
 import os, timm, torch 
 from tqdm import tqdm
 
 def train_setup(model_name, epochs, classes, device, lr = 3e-4): 
+
+    """
+
+    This function gets several parameters and conducts train setup.
+
+    Parameters:
+
+        model_name     - name of a model to be trained, str;
+        epochs         - number of epochs to train the model;
+        classes        - class names of the dataset, dict;
+        device         - device, either CPU or GPU;
+        lr             - learning rate value, float.
+
+    Outputs:
+
+        m              - model to be trained, timm model object;
+        epochs         - number of epochs to train the model;
+        classes        - class names of the dataset, dict;
+        device         - device, either CPU or GPU;
+        loss_fn        - loss function to evaluation the model;
+        optimizer      - optimizer function to update trainable parameters of the model, torch optim object;
+
+    """
+    
+    # Get a model to be trained
     m = timm.create_model(model_name, pretrained = True, num_classes = len(classes))  
+    
     return m.to(device), epochs, device, torch.nn.CrossEntropyLoss(), torch.optim.Adam(params = m.parameters(), lr = lr)
 
 def train(tr_dl, val_dl, m, device, loss_fn, optimizer, epochs, save_dir = "saved_models", save_prefix = "med"):
