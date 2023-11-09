@@ -43,11 +43,29 @@ class CustomDataset(Dataset):
     def __len__(self): return len(self.im_paths)
 
     def __getitem__(self, idx):
+
+        """
         
+        This function gets an index and returns image and label pair.
+
+        Parameter:
+
+            idx       - index, int;
+
+        Outputs:
+
+            im        - image, tensor;
+            gt        - class, int.
+        
+        """
+        
+        # Get an image path
         im_path = self.im_paths[idx]
+        # Read an image based on the path
         im = Image.open(im_path)
+        # Get label
         gt = self.classes[self.get_class(im_path)]
-        
+        # Apply transformations
         if self.transformations is not None: im = self.transformations(im)
         
         return im, gt
