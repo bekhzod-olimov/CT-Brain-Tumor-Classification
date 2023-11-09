@@ -1,27 +1,45 @@
 # Import libraries
 import torch, torchvision, os
 from torch.utils.data import random_split, Dataset, DataLoader
-from torch import nn
-from PIL import Image
-from torchvision import transforms as T
-from glob import glob
+from torch import nn; from PIL import Image
+from torchvision import transforms as T; from glob import glob
 torch.manual_seed(2023)
 
 class CustomDataset(Dataset):
+
+    """
+    
+    This class gets several parameters and return custom dataset.
+
+    Parameters:
+
+        root              - path to data, str;
+        n_cls             - number of classes in the dataset, int;
+        transformations   - transformations to be applied, torchvision transforms object.
+        
+    """
     
     def __init__(self, root, n_cls, transformations = None):
         
+        # Get the transformations
         self.transformations = transformations
+        # Get the image files list from the directory
         self.im_paths = [im_path for im_path in sorted(glob(f"{root}/*/*")) if "jpg" in im_path]
-        
+
+        # Get classes and their counts
         self.classes, count = {}, 0
+        # Go through every path 
         for idx, im_path in enumerate(self.im_paths):
             if len(self.classes) == n_cls: break
+            # Get class name based on the path
             class_name = self.get_class(im_path)
+            # Add count
             if class_name not in self.classes: self.classes[class_name] = count; count += 1            
         
+    # Function to get class name based on the path
     def get_class(self, path): return os.path.dirname(path).split("/")[-1]
     
+    # Function to get the length of the dataset
     def __len__(self): return len(self.im_paths)
 
     def __getitem__(self, idx):
