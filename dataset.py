@@ -71,6 +71,20 @@ class CustomDataset(Dataset):
         return im, gt
 
 def get_dls(root, transformations, bs, n_cls, split = [0.8, 0.1, 0.1], ns = 4):
+
+    """
+    
+    This function gets several parameters and returns train, validation, and test dataloaders.
+
+    Parameters:
+
+        root              - path to data, str;
+        transformations   - transformations to be applied, torchvision transforms object;
+        bs                - mini batch size, int;
+        n_cls             - number of classes in the dataset, int;
+        split, ns
+    
+    """
     
     ds = CustomDataset(root = root, transformations = transformations, n_cls = n_cls)
     ds_len = len(ds)
