@@ -82,16 +82,20 @@ def get_dls(root, transformations, bs, n_cls, split = [0.8, 0.1, 0.1], ns = 4):
         transformations   - transformations to be applied, torchvision transforms object;
         bs                - mini batch size, int;
         n_cls             - number of classes in the dataset, int;
-        split, ns
-    
+        split             - split for train, validation, and test data, list -> float;
+        ns                - number of workers, int.
+        
     """
     
+    # Get dataset
     ds = CustomDataset(root = root, transformations = transformations, n_cls = n_cls)
+    # Get the dataset length
     ds_len = len(ds)
+    # Get the train, validation, and test set lentghs
     tr_len = int(ds_len * split[0]); val_len = int(ds_len * split[1]); ts_len = ds_len - tr_len - val_len
-    
+    # Split the data based on the lengths
     tr_ds, val_ds, ts_ds = random_split(ds, [tr_len, val_len, ts_len])
-    
+    # Create train, validation, and test dataloaders
     tr_dl, val_dl, ts_dl = DataLoader(tr_ds, batch_size = bs, shuffle = True, num_workers = ns), DataLoader(val_ds, batch_size = bs, shuffle = False, num_workers = ns), DataLoader(ts_ds, batch_size = 1, shuffle = False, num_workers = ns)
     
     return tr_dl, val_dl, ts_dl, ds.classes
