@@ -1,6 +1,6 @@
 # CT-Brain-Tumor-Classification
 
-This repository contains a deep learning (DL)-based artificial intelligence (AI) image classification model training to classify computed tomography (CT) brain tumors. The AI model used for the classification task is RexNet ([paper](https://arxiv.org/pdf/2007.00992.pdf) and [code](https://github.com/clovaai/rexnet)) and the dataset for training is [A Refined Brain Tumor Image Dataset with Grayscale Normalization and Zoom](https://www.kaggle.com/datasets/thomasdubail/brain-tumors-256x256).
+This repository contains a deep learning (DL)-based artificial intelligence (AI) image classification model training to classify computed tomography (CT) brain tumors. The AI model used for the classification task is RexNet ([paper](https://arxiv.org/pdf/2007.00992.pdf) and [code](https://github.com/clovaai/rexnet)) and the dataset for training is [A Refined Brain Tumor Image Dataset with Grayscale Normalization and Zoom](https://www.kaggle.com/datasets/thomasdubail/brain-tumors-256x256). The project in [Kaggle](https://www.kaggle.com/) can be found [here](https://www.kaggle.com/code/killa92/pytorch-resnet-18-99-9-accuracy).
 
 # Manual on how to use the repo:
 
