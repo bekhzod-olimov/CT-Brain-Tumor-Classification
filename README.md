@@ -18,3 +18,8 @@ Then activate the environment using the following command:
 ```python
 conda activate speed
 ```
+
+3. Train the AI model using the following script:
+```python
+python main.py --root PATH_TO_THE_DATA --batch_size = 64 device = "cuda:0"
+```
