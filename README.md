@@ -59,8 +59,4 @@ The inference progress:
 
 7. Inference Results (Predictions):
 
-![brain_preds](https://github.com/bekhzod-olimov/BrainTumorClassification/assets/50166164/e3b1c13f-6032-4a99-9a7b-a32443a780c5)
-
-8. Inference Results (GradCAM):
-
-![brain_gradcam](https://github.com/bekhzod-olimov/BrainTumorClassification/assets/50166164/75aa399c-07aa-4ea9-b25f-ad3c9e15c6ea)
+![brain_preds](https://github.com/bekhzod-olimov/CT-Brain-Tumor-Classification/assets/50166164/db6702ad-1c1c-4fdc-8d08-c35740393a70)
