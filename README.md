@@ -21,7 +21,7 @@ conda activate speed
 
 3. Data Visualization
 
-![image](https://github.com/bekhzod-olimov/BrainTumorClassification/assets/50166164/97f6f557-2858-41ef-be88-39c9076764c4)
+![image](https://github.com/bekhzod-olimov/CT-Brain-Tumor-Classification/assets/50166164/dfc56a5a-3fc6-41de-8aae-d90df0d1db49)
 
 4. Train the AI model using the following script:
 ```python
