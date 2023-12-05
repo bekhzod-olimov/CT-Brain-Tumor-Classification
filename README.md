@@ -42,11 +42,11 @@ Use [DrawLearningCurves](https://github.com/bekhzod-olimov/JellyfishClassifier/b
 
 * Train and validation loss curves:
   
-![loss_learning_curves](https://github.com/bekhzod-olimov/BrainTumorClassification/assets/50166164/87e63da8-3f44-478a-8631-ea451258754a)
+![image](https://github.com/bekhzod-olimov/CT-Brain-Tumor-Classification/assets/50166164/c7a78418-0d0c-41bc-b361-9071b21c16f7)
 
 * Train and validation accuracy curves:
   
-![acc_learning_curves](https://github.com/bekhzod-olimov/BrainTumorClassification/assets/50166164/b80c1823-d6c1-466f-8d3f-4642ec50a281)
+![image](https://github.com/bekhzod-olimov/CT-Brain-Tumor-Classification/assets/50166164/5d4711e7-8b8a-4f61-95cc-d5e9746baded)
 
 6. Conduct inference using the trained model:
 ```python
