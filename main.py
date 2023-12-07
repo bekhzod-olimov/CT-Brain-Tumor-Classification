@@ -3,10 +3,8 @@ import torch, wandb, argparse, yaml, os, pickle, pytorch_lightning as pl
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 from pytorch_lightning.callbacks import ModelCheckpoint, Callback
-from dataset import get_dls
-from transformations import get_tfs
-from time import time
-from train import train_setup, train
+from dataset import get_dls; from transformations import get_tfs
+from time import time; from train import train_setup, train
 
 def run(args):
     
@@ -27,17 +25,19 @@ def run(args):
     # Get train arguments 
     argstr = yaml.dump(args.__dict__, default_flow_style = False)
     print(f"\nTraining Arguments:\n\n{argstr}")
+
+    # Create directories to save dataloaders
+    os.makedirs(args.dls_dir, exist_ok = True)
     
-    os.makedirs(args.dls_dir, exist_ok=True)
-    
+    # Get the train and validation transformations
     transformations = get_tfs()
+    # Get the train, validation, test dataloaders, and class names
     tr_dl, val_dl, ts_dl, classes = get_dls(root = args.root, transformations = transformations, bs = args.batch_size, n_cls = 3)
     
+    # Save the dataloaders
     if os.path.isfile(f"{args.dls_dir}/tr_dl") and os.path.isfile(f"{args.dls_dir}/val_dl") and os.path.isfile(f"{args.dls_dir}/ts_dl"): pass
     else:
-        torch.save(tr_dl,   f"{args.dls_dir}/tr_dl")
-        torch.save(val_dl,  f"{args.dls_dir}/val_dl")
-        torch.save(ts_dl, f"{args.dls_dir}/test_dl")
+        torch.save(tr_dl, f"{args.dls_dir}/tr_dl"); torch.save(val_dl,  f"{args.dls_dir}/val_dl"); torch.save(ts_dl, f"{args.dls_dir}/test_dl")
     
     tr_dl, val_dl = torch.load(f"{args.dls_dir}/tr_dl"), torch.load(f"{args.dls_dir}/val_dl")
     
