@@ -38,19 +38,21 @@ def run(args):
     if os.path.isfile(f"{args.dls_dir}/tr_dl") and os.path.isfile(f"{args.dls_dir}/val_dl") and os.path.isfile(f"{args.dls_dir}/ts_dl"): pass
     else:
         torch.save(tr_dl, f"{args.dls_dir}/tr_dl"); torch.save(val_dl,  f"{args.dls_dir}/val_dl"); torch.save(ts_dl, f"{args.dls_dir}/test_dl")
-    
+
+    # Load the train and validation dataloaders
     tr_dl, val_dl = torch.load(f"{args.dls_dir}/tr_dl"), torch.load(f"{args.dls_dir}/val_dl")
     
+    # Set a file name to save the class names
     cls_names_file = f"{args.dls_dir}/cls_names.pkl"
+    # Save the class names file
     if os.path.isfile(cls_names_file): pass
     else:
-        with open(f"{cls_names_file}", "wb") as f: 
-            pickle.dump(classes, f)
+        with open(f"{cls_names_file}", "wb") as f: pickle.dump(classes, f)
 
+    # Setup training process
     m, epochs, device, loss_fn, optimizer = train_setup(model_name = args.model_name, epochs = args.epochs, classes = classes, device = args.device)
-    train(tr_dl = tr_dl, val_dl = val_dl, m = m, device = args.device, 
-          loss_fn = loss_fn, optimizer = optimizer, epochs = args.epochs, 
-          save_dir = "saved_models", save_prefix = "med")
+    # Start train process
+    train(tr_dl = tr_dl, val_dl = val_dl, m = m, device = args.device, loss_fn = loss_fn, optimizer = optimizer, epochs = args.epochs, save_dir = "saved_models", save_prefix = "med")
     
 if __name__ == "__main__":
     
