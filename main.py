@@ -57,7 +57,7 @@ def run(args):
 if __name__ == "__main__":
     
     # Initialize Argument Parser    
-    parser = argparse.ArgumentParser(description = 'Image Classification Training Arguments')
+    parser = argparse.ArgumentParser(description = "Image Classification Training Arguments")
     
     # Add arguments to the parser
     parser.add_argument("-r", "--root", type = str, default = "files", help = "Path to data")
